@@ -22,7 +22,7 @@ namespace Homework_SkillTree.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string category, string money, string date)
+        public ActionResult Index(string category, string money, string date, string description)
         {
             return View();
         }
