@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Homework_SkillTree.Models;
 
 namespace Homework_SkillTree.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly List<MoneyRecord> _moneyRecords = new List<MoneyRecord>();
+
         public ActionResult Index()
         {
             SetViewDataSelectList();
@@ -18,6 +21,7 @@ namespace Homework_SkillTree.Controllers
         public ActionResult Index(string category, string money, string date, string description)
         {
             SetViewDataSelectList();
+            _moneyRecords.Add(new MoneyRecord() { Category = category, Money = money, Date = date, Description = description });
             return View();
         }
         
