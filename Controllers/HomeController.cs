@@ -10,29 +10,27 @@ namespace Homework_SkillTree.Controllers
     {
         public ActionResult Index()
         {
-            var items = new List<SelectListItem>()
-            {
-                new SelectListItem() {Text = "請選擇", Value = "請選擇", Selected = true},
-                new SelectListItem() {Text = "支出", Value = "支出"},
-                new SelectListItem() {Text = "收入", Value = "收入"},
-            };
-            
-            ViewData["dr"] = items;
+            SetViewDataSelectList();
             return View();
         }
-
+        
         [HttpPost]
         public ActionResult Index(string category, string money, string date, string description)
         {
+            SetViewDataSelectList();
+            return View();
+        }
+        
+        private void SetViewDataSelectList()
+        {
             var items = new List<SelectListItem>()
             {
-                new SelectListItem() {Text = "請選擇", Value = "請選擇", Selected = true},
-                new SelectListItem() {Text = "支出", Value = "支出"},
-                new SelectListItem() {Text = "收入", Value = "收入"},
+                new SelectListItem() { Text = "請選擇", Value = "請選擇", Selected = true },
+                new SelectListItem() { Text = "支出", Value = "支出" },
+                new SelectListItem() { Text = "收入", Value = "收入" },
             };
-            
+
             ViewData["dr"] = items;
-            return View();
         }
 
         public ActionResult About()
