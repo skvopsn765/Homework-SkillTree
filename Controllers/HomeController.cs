@@ -9,7 +9,7 @@ namespace Homework_SkillTree.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly List<MoneyRecord> _moneyRecords = new List<MoneyRecord>();
+        private readonly List<MoneyRecordViewModel> _moneyRecords = new List<MoneyRecordViewModel>();
 
         public ActionResult Index()
         {
@@ -21,7 +21,7 @@ namespace Homework_SkillTree.Controllers
         public ActionResult Index(string category, string money, string date, string description)
         {
             SetViewDataSelectList();
-            _moneyRecords.Add(new MoneyRecord() { Category = category, Money = money, Date = date, Description = description });
+            _moneyRecords.Add(new MoneyRecordViewModel() { Category = category, Money = money, Date = date, Description = description });
             return View();
         }
         

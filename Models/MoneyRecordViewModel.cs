@@ -1,6 +1,6 @@
 ﻿namespace Homework_SkillTree.Models
 {
-    public class MoneyRecord
+    public class MoneyRecordViewModel
     {
         public string Category { get; set; }
         public string Money { get; set; }
