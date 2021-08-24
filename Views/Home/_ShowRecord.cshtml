@@ -30,3 +30,8 @@
         </table>
     </div>
 </div>
+
+@foreach (var item in @Model)
+{
+    <li>@item.Category @item.Date @item.Description @item.Money</li>
+}

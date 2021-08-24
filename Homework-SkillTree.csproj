@@ -121,10 +121,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Enums\EnumCategory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\MoneyRecordViewModel.cs" />
+    <Compile Include="Models\RecordDisplayViewModel.cs" />
+    <Compile Include="Models\RecordInputViewModel.cs" />
+    <Compile Include="Models\RecordViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
