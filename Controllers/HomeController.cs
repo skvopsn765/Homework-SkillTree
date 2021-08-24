@@ -9,14 +9,13 @@ namespace Homework_SkillTree.Controllers
 {
     public class HomeController : Controller
     {
-
         public ActionResult Index()
         {
             return View();
         }
         
         [HttpPost]
-        public ActionResult Index(MoneyRecordViewModel model, string category, string money, string date, string description)
+        public ActionResult Index(MoneyRecordViewModel model)
         {
             return View();
         }

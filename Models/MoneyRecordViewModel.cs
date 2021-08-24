@@ -15,6 +15,7 @@ namespace Homework_SkillTree.Models
         [Display(Name = "支出")]
         Outcome,
     }
+    
     public class MoneyRecordViewModel
     {
         [DisplayName("類別")]
