@@ -9,12 +9,18 @@
                 <th>日期</th>
                 <th>金額</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>支出</td>
-                <td>2016-01-01</td>
-                <td>300</td>
-            </tr>
+            @{
+                var i = 1;
+                foreach (var item in @Model)
+                {
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@item.Category</td>
+                        <td>@item.Date</td>
+                        <td>@item.Money</td>
+                    </tr>
+                }
+            }
             <tr>
                 <td>2</td>
                 <td>支出</td>
@@ -30,8 +36,3 @@
         </table>
     </div>
 </div>
-
-@foreach (var item in @Model)
-{
-    <li>@item.Category @item.Date @item.Description @item.Money</li>
-}

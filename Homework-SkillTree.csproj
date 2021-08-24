@@ -125,7 +125,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\RecordDisplayViewModel.cs" />
     <Compile Include="Models\RecordInputViewModel.cs" />
     <Compile Include="Models\RecordViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
