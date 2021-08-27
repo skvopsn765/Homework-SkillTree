@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Homework_SkillTree.Enums;
 
@@ -13,7 +14,7 @@ namespace Homework_SkillTree.Models
         public string Money { get; set; }
         
         [DisplayName("日期")]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         
         [DisplayName("備註")]
         public string Description { get; set; }
