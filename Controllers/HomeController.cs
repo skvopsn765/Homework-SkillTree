@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using Homework_SkillTree.Enums;
 using Homework_SkillTree.Models;
@@ -30,8 +29,6 @@ namespace Homework_SkillTree.Controllers
             }
             return recordViewModel;
         }
-
-        public static DateTime Date { get; set; }
 
         [HttpPost]
         public ActionResult Index(RecordViewModel model)
