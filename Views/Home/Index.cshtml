@@ -16,19 +16,19 @@
         <div class="form-group">
             @Html.LabelFor(x => x.InputViewModel.Money, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
-                @Html.TextBoxFor(x=>x.InputViewModel.Money, null, new { placeholder = "金額", @class = "form-control" })
+                @Html.EditorFor(x => x.InputViewModel.Money, new { htmlAttributes = new { placeholder = "金額", @class = "form-control" } })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(x => x.InputViewModel.Date, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
-                @Html.TextBoxFor(x=>x.InputViewModel.Date, null, new { placeholder = "日期", @class = "form-control" })
+                @Html.EditorFor(x => x.InputViewModel.Date, new { htmlAttributes = new { placeholder = "日期", @class = "form-control" } })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(x=> x.InputViewModel.Description, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(x => x.InputViewModel.Description, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
-                @Html.TextAreaFor(x=>x.InputViewModel.Description, new { placeholder = "備註", @class = "form-control" })
+                @Html.TextAreaFor(x => x.InputViewModel.Description, new { placeholder = "備註", @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
