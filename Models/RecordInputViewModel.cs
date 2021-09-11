@@ -11,7 +11,7 @@ namespace Homework_SkillTree.Models
         public EnumCategory Category { get; set; }
         
         [DisplayName("金額")]
-        public string Money { get; set; }
+        public int Money { get; set; }
         
         [DisplayName("日期")]
         public DateTime Date { get; set; }
