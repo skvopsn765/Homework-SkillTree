@@ -48,7 +48,7 @@ namespace Homework_SkillTree.Controllers
             return RedirectToAction("Index", inputViewModel);
         }
 
-        public ActionResult CheckDate([Bind(Prefix = "inputViewModel.Date")]DateTime? date)
+        public ActionResult CheckDate([Bind(Prefix = "inputViewModel.Date")] DateTime? date)
         {
             if (date <= DateTime.Today.Date)
             {

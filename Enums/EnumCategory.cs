@@ -4,13 +4,13 @@ namespace Homework_SkillTree.Enums
 {
     public enum EnumCategory
     {
-        [Display(Name = "請選擇")]
+        [Display(Name = "Default")]
         Default,
         
-        [Display(Name = "收入")]
+        [Display(Name = "Income")]
         Income,
         
-        [Display(Name = "支出")]
+        [Display(Name = "Outcome")]
         Outcome,
     }
 }
