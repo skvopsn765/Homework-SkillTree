@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Homework_SkillTree.Helper;
 using Homework_SkillTree.Models;
 using Homework_SkillTree.Service;
@@ -15,12 +16,13 @@ namespace Homework_SkillTree.Controllers
             _accountService = new AccountService(Model1);
         }
 
-        public ActionResult Index()
+        public ActionResult Index(RecordInputViewModel inputViewModel)
         {
             var recordViewModel = _accountService.GetRecordViewModel();
+            recordViewModel.InputViewModel = inputViewModel;
             return View(recordViewModel);
         }
-        
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -43,7 +45,17 @@ namespace Homework_SkillTree.Controllers
                 _accountService.Add(inputViewModel);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", inputViewModel);
+        }
+
+        public ActionResult CheckDate([Bind(Prefix = "inputViewModel.Date")]DateTime? date)
+        {
+            if (date <= DateTime.Today.Date)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json("日期不可以超過今天！", JsonRequestBehavior.AllowGet);
         }
     }
 }
