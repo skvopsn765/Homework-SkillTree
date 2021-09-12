@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Homework_SkillTree.Enums;
+using Homework_SkillTree.Filters;
 
 namespace Homework_SkillTree.Models
 {
@@ -17,7 +18,8 @@ namespace Homework_SkillTree.Models
         [DisplayName("金額")]
         public int Money { get; set; }
 
-        [Remote("CheckDate", "Home")]
+        // [Remote("CheckDate", "Home")]
+        [RemoteDoublePlus("CheckDate", "Home","")]
         [Required]
         [DisplayName("日期")]
         [DataType(DataType.Date)]
