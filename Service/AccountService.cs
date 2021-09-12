@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Homework_SkillTree.Enums;
 using Homework_SkillTree.Models;
@@ -8,11 +7,16 @@ namespace Homework_SkillTree.Service
 {
     public class AccountService
     {
-        private static readonly Model1 Model1 = new Model1();
+        private static Model1 _model1 = IocHelper.Resolve<Model1>();
+
+        public AccountService(Model1 model1)
+        {
+            _model1 = model1;
+        }
 
         public RecordViewModel GetRecordViewModel()
         {
-            var accountBooks = Model1.AccountBook.ToList();
+            var accountBooks = _model1.AccountBook.ToList();
             var recordViewModel = new RecordViewModel
             {
                 DisplayViewModel = accountBooks.Select(x => new RecordInputViewModel()
@@ -28,7 +32,7 @@ namespace Homework_SkillTree.Service
 
         public void Add(RecordInputViewModel recordInputViewModel)
         {
-            Model1.AccountBook.Add(new AccountBook()
+            _model1.AccountBook.Add(new AccountBook()
             {
                 Id = Guid.NewGuid(),
                 Amounttt = recordInputViewModel.Money,
@@ -36,7 +40,7 @@ namespace Homework_SkillTree.Service
                 Dateee = recordInputViewModel.Date,
                 Remarkkk = recordInputViewModel.Description
             });
-            Model1.SaveChanges();
+            _model1.SaveChanges();
         }
     }
 }
