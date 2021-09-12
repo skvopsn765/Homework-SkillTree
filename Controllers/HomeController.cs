@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using Homework_SkillTree.Enums;
+﻿using System.Web.Mvc;
 using Homework_SkillTree.Models;
 using Homework_SkillTree.Service;
 
@@ -12,6 +10,14 @@ namespace Homework_SkillTree.Controllers
 
         public ActionResult Index()
         {
+            var recordViewModel = _accountService.GetRecordViewModel();
+            return View(recordViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Index(RecordViewModel model)
+        {
+            _accountService.Add(model.InputViewModel);
             var recordViewModel = _accountService.GetRecordViewModel();
             return View(recordViewModel);
         }
