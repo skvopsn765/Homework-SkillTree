@@ -49,3 +49,27 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script type="text/javascript">
+$(document).ready(function () {
+    var serviceURL = '/Home/Submit';
+
+    $.ajax({
+        type: "POST",
+        url: '@Url.Action("Submit", "Home")',
+        contentType: "application/json; charset=utf-8",
+        data: { a: "testing" },
+        dataType: "json",
+        success: function() { alert('Success'); },
+        error: errorFunc
+    });
+
+    function successFunc(data, status) {     
+        alert(data);
+    }
+
+    function errorFunc() {
+        alert('error');
+    }
+});
+</script>

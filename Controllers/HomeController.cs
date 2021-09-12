@@ -16,11 +16,24 @@ namespace Homework_SkillTree.Controllers
             _accountService = new AccountService(Model1);
         }
 
+        [HttpGet]
         public ActionResult Index(RecordInputViewModel inputViewModel)
         {
             var recordViewModel = _accountService.GetRecordViewModel();
             recordViewModel.InputViewModel = inputViewModel;
             return View(recordViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Submit(RecordInputViewModel inputViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _accountService.Add(inputViewModel);
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index", inputViewModel);
         }
 
         public ActionResult About()
@@ -35,17 +48,6 @@ namespace Homework_SkillTree.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult Submit(RecordInputViewModel inputViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                _accountService.Add(inputViewModel);
-            }
-
-            return RedirectToAction("Index", inputViewModel);
         }
 
         public ActionResult CheckDate([Bind(Prefix = "inputViewModel.Date")] DateTime? date)
