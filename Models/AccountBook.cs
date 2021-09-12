@@ -1,20 +1,22 @@
 namespace Homework_SkillTree.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("AccountBook")]
-    public partial class AccountBook
+    public class AccountBook
     {
+        [Required]
         public Guid Id { get; set; }
 
+        [Required]
         public int Categoryyy { get; set; }
 
+        [Required]
         public int Amounttt { get; set; }
 
+        [Required]
         public DateTime Dateee { get; set; }
 
         [Required]

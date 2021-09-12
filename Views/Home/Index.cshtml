@@ -2,11 +2,14 @@
 @{
     ViewBag.Title = "Home Page";
 }
-@using (Html.BeginForm("Index", "Home",
+@using (Html.BeginForm("Submit", "Home",
     new { ReturnUrl = ViewBag.ReturnUrl },
     FormMethod.Post, new { @class = "form-horizontal" }))
 {
+    @Html.AntiForgeryToken()
+
     <div class="well">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(x => x.InputViewModel.Category, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
@@ -17,12 +20,14 @@
             @Html.LabelFor(x => x.InputViewModel.Money, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
                 @Html.EditorFor(x => x.InputViewModel.Money, new { htmlAttributes = new { placeholder = "金額", @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.InputViewModel.Money, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(x => x.InputViewModel.Date, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
                 @Html.EditorFor(x => x.InputViewModel.Date, new { htmlAttributes = new { placeholder = "日期", @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.InputViewModel.Date, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -39,3 +44,7 @@
     </div>
 }
 @Html.Partial("_ShowRecord", Model.DisplayViewModel)
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
