@@ -7,7 +7,13 @@ namespace Homework_SkillTree.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly AccountService _accountService = IocHelper.Resolve<AccountService>();
+        private static readonly Model1 Model1 = IocHelper.Resolve<Model1>();
+        private readonly AccountService _accountService;
+
+        public HomeController()
+        {
+            _accountService = new AccountService(Model1);
+        }
 
         public ActionResult Index()
         {

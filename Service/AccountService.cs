@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Linq;
 using Homework_SkillTree.Enums;
-using Homework_SkillTree.Helper;
 using Homework_SkillTree.Models;
 
 namespace Homework_SkillTree.Service
 {
     public class AccountService
     {
-        private static Model1 _model1 = IocHelper.Resolve<Model1>();
+        private static Model1 _model1;
 
         public AccountService(Model1 model1)
         {
@@ -17,8 +16,12 @@ namespace Homework_SkillTree.Service
 
         public RecordViewModel GetRecordViewModel()
         {
+            if (_model1.AccountBook is null)
+            {
+                return null;
+            }
             var accountBooks = _model1.AccountBook.ToList();
-            var recordViewModel = new RecordViewModel
+            return new RecordViewModel
             {
                 DisplayViewModel = accountBooks.Select(x => new RecordInputViewModel()
                 {
@@ -26,9 +29,8 @@ namespace Homework_SkillTree.Service
                     Date = x.Dateee,
                     Description = x.Remarkkk,
                     Money = x.Amounttt
-                }).ToList(),
+                }).OrderByDescending(x=>x.Date).ToList(),
             };
-            return recordViewModel;
         }
 
         public void Add(RecordInputViewModel recordInputViewModel)
