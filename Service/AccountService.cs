@@ -20,6 +20,7 @@ namespace Homework_SkillTree.Service
             {
                 return null;
             }
+
             var accountBooks = _model1.AccountBook.ToList();
             return new RecordViewModel
             {
@@ -29,7 +30,7 @@ namespace Homework_SkillTree.Service
                     Date = x.Dateee,
                     Description = x.Remarkkk,
                     Money = x.Amounttt.ToString()
-                }).OrderByDescending(x=>x.Date).ToList(),
+                }).OrderByDescending(x => x.Date).ToList(),
             };
         }
 
@@ -43,6 +44,10 @@ namespace Homework_SkillTree.Service
                 Dateee = recordInputViewModel.Date,
                 Remarkkk = recordInputViewModel.Description
             });
+        }
+
+        public void Save()
+        {
             _model1.SaveChanges();
         }
     }

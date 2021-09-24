@@ -30,6 +30,7 @@ namespace Homework_SkillTree.Controllers
             if (ModelState.IsValid)
             {
                 _accountService.Add(inputViewModel);
+                _accountService.Save();
                 return RedirectToAction("Index");
             }
 

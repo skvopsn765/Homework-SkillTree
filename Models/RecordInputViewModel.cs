@@ -18,7 +18,6 @@ namespace Homework_SkillTree.Models
         [DisplayName("金額")]
         public string Money { get; set; }
 
-        // [Remote("CheckDate", "Home")]
         [RemoteDoublePlus("CheckDate", "Home","")]
         [Required]
         [DisplayName("日期")]
