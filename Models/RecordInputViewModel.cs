@@ -16,7 +16,7 @@ namespace Homework_SkillTree.Models
         [Required]
         [Range(0, int.MaxValue)]
         [DisplayName("金額")]
-        public int Money { get; set; }
+        public string Money { get; set; }
 
         // [Remote("CheckDate", "Home")]
         [RemoteDoublePlus("CheckDate", "Home","")]

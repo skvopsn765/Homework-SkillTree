@@ -28,7 +28,7 @@ namespace Homework_SkillTree.Service
                     Category = (EnumCategory)x.Categoryyy,
                     Date = x.Dateee,
                     Description = x.Remarkkk,
-                    Money = x.Amounttt
+                    Money = x.Amounttt.ToString()
                 }).OrderByDescending(x=>x.Date).ToList(),
             };
         }
