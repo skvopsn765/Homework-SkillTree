@@ -38,7 +38,7 @@ namespace Homework_SkillTree.Service
             _model1.AccountBook.Add(new AccountBook()
             {
                 Id = Guid.NewGuid(),
-                Amounttt = recordInputViewModel.Money,
+                Amounttt = Convert.ToInt32(recordInputViewModel.Money),
                 Categoryyy = (int)recordInputViewModel.Category,
                 Dateee = recordInputViewModel.Date,
                 Remarkkk = recordInputViewModel.Description
