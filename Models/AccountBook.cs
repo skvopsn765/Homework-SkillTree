@@ -5,7 +5,7 @@ namespace Homework_SkillTree.Models
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("AccountBook")]
-    public class AccountBook
+    public partial class AccountBook
     {
         [Required]
         public Guid Id { get; set; }
