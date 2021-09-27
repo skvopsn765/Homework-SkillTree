@@ -7,16 +7,12 @@ namespace Homework_SkillTree.Models
     [Table("AccountBook")]
     public partial class AccountBook
     {
-        [Required]
         public Guid Id { get; set; }
 
-        [Required]
         public int Categoryyy { get; set; }
 
-        [Required]
         public int Amounttt { get; set; }
 
-        [Required]
         public DateTime Dateee { get; set; }
 
         [Required]

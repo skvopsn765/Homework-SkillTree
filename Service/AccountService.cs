@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Validation;
 using System.Linq;
 using Homework_SkillTree.Enums;
 using Homework_SkillTree.Models;
@@ -48,7 +49,15 @@ namespace Homework_SkillTree.Service
 
         public void Save()
         {
-            _model1.SaveChanges();
+            try { 
+                _model1.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var entityError = ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.ErrorMessage);
+                var getFullMessage = string.Join("; ", entityError);
+                var exceptionMessage = string.Concat(ex.Message, "errors are: ", getFullMessage);
+            }
         }
     }
 }

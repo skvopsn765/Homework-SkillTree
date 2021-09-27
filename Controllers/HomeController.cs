@@ -51,7 +51,7 @@ namespace Homework_SkillTree.Controllers
             return View();
         }
 
-        public ActionResult CheckDate(DateTime? date, string test)
+        public ActionResult CheckDate([Bind(Prefix = "inputViewModel.Date")] DateTime? date, string test)
         {
             if (date <= DateTime.Today.Date)
             {

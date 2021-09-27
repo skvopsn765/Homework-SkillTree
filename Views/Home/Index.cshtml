@@ -51,25 +51,18 @@
 }
 
 <script type="text/javascript">
-$(document).ready(function () {
-    var serviceURL = '/Home/Submit';
-
-    $.ajax({
-        type: "POST",
-        url: '@Url.Action("Submit", "Home")',
-        contentType: "application/json; charset=utf-8",
-        data: { a: "testing" },
-        dataType: "json",
-        success: function() { alert('Success'); },
-        error: errorFunc
+    $(function () {
+        $("#submit").click(function (e) {
+            if (!$('form').valid()) {
+                var error = '';
+                $(".field-validation-error").each(function (index, domEle) {
+                    error += $(domEle).text() + '\n';
+                });
+                alert(error);
+            }
+            else {
+                $('form').submit();
+            }
+        });
     });
-
-    function successFunc(data, status) {     
-        alert(data);
-    }
-
-    function errorFunc() {
-        alert('error');
-    }
-});
 </script>
