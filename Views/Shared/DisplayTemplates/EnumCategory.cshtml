@@ -1,0 +1,18 @@
+﻿@using Homework_SkillTree.Enums
+@model EnumCategory
+@if (Model.HasFlag(EnumCategory.Income))
+{
+    <span class="text-danger">
+        @Model
+    </span>
+}
+else if (Model == EnumCategory.Outcome)
+{
+    <span class="text-primary">
+        @Model
+    </span>
+}
+else
+{
+    @Model
+}
