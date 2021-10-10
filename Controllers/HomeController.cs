@@ -3,11 +3,13 @@ using System.Web.Mvc;
 using Homework_SkillTree.Helper;
 using Homework_SkillTree.Models;
 using Homework_SkillTree.Service;
+using X.PagedList;
 
 namespace Homework_SkillTree.Controllers
 {
     public class HomeController : Controller
     {
+        private const int PageSize = 20;
         private static readonly Model1 Model1 = IocHelper.Resolve<Model1>();
         private readonly AccountService _accountService;
 
@@ -21,13 +23,29 @@ namespace Homework_SkillTree.Controllers
         {
             return View(inputViewModel);
         }
-        
+
         [HttpGet]
-        [ChildActionOnly]
-        public ActionResult ShowRecord()
+        public ActionResult ShowRecord(int page = 1)
         {
+            var pagedRecord = GetPagedRecord(page);
+            return View(pagedRecord);
+        }
+
+        private object GetPagedRecord(int? page)
+        {
+            if (page < 1)
+            {
+                return null;
+            }
+
             var inputViewModel = _accountService.GetInputViewModel();
-            return View(inputViewModel);
+
+            var listPaged = inputViewModel.ToPagedList(page ?? 1, PageSize);
+
+            if (listPaged.PageNumber != 1 && page.HasValue && page > listPaged.PageCount)
+                return null;
+            
+            return listPaged;
         }
 
         [HttpPost]
