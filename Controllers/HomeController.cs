@@ -4,11 +4,13 @@ using System.Web.Mvc;
 using Homework_SkillTree.Helper;
 using Homework_SkillTree.Models;
 using Homework_SkillTree.Service;
+using X.PagedList;
 
 namespace Homework_SkillTree.Controllers
 {
     public class HomeController : Controller
     {
+        private const int PageSize = 20;
         private static readonly Model1 Model1 = IocHelper.Resolve<Model1>();
         private readonly AccountService _accountService;
 
@@ -17,11 +19,9 @@ namespace Homework_SkillTree.Controllers
             _accountService = new AccountService(Model1);
         }
 
-        [HttpGet]
         [Route("skilltree")]
         [Route("skilltree/{year:length(4)}/{month:length(2)}")]
-        public ActionResult SkillTree(InputViewModel inputViewModel, int? year, int? month)
-        {
+        public ActionResult SkillTree(InputViewModel inputViewModel, int? year, int? month)        {
             ViewBag.Year = year;
             ViewBag.Month = month;
             return View(inputViewModel);
@@ -35,15 +35,31 @@ namespace Homework_SkillTree.Controllers
 
         [HttpGet]
         [ChildActionOnly]
-        public ActionResult ShowRecord(int? year, int? month)
+        public ActionResult ShowRecord(int? year, int? month, int page = 1)
         {
+            var pagedRecord = GetPagedRecord(year, month, page);
+            return View(pagedRecord);
+        }
+
+        private object GetPagedRecord(int? year, int? month, int? page)
+        {
+            if (page < 1)
+            {
+                return null;
+            }
+
             var inputViewModel = _accountService.GetInputViewModel();
             if (year != null && month != null)
             {
                 inputViewModel = inputViewModel.Where(x => x.Date.Year == year && x.Date.Month == month).ToList();
             }
 
-            return View(inputViewModel);
+            var listPaged = inputViewModel.ToPagedList(page ?? 1, PageSize);
+
+            if (listPaged.PageNumber != 1 && page.HasValue && page > listPaged.PageCount)
+                return null;
+            
+            return listPaged;
         }
 
         [HttpPost]
