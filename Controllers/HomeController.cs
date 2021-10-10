@@ -37,6 +37,8 @@ namespace Homework_SkillTree.Controllers
         [ChildActionOnly]
         public ActionResult ShowRecord(int? year, int? month, int page = 1)
         {
+            ViewBag.Year = year;
+            ViewBag.Month = month;
             var pagedRecord = GetPagedRecord(year, month, page);
             return View(pagedRecord);
         }
