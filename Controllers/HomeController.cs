@@ -23,6 +23,13 @@ namespace Homework_SkillTree.Controllers
             recordViewModel.InputViewModel = inputViewModel;
             return View(recordViewModel);
         }
+        
+        [HttpGet]
+        public ActionResult ShowRecord()
+        {
+            var recordViewModel = _accountService.GetRecordViewModel();
+            return View(recordViewModel.DisplayViewModel);
+        }
 
         [HttpPost]
         public ActionResult Submit(RecordInputViewModel inputViewModel)
