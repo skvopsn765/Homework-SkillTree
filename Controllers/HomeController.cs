@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Homework_SkillTree.Helper;
 using Homework_SkillTree.Models;
@@ -17,16 +18,31 @@ namespace Homework_SkillTree.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(InputViewModel inputViewModel)
+        [Route("skilltree")]
+        [Route("skilltree/{year:length(4)}/{month:length(2)}")]
+        public ActionResult SkillTree(InputViewModel inputViewModel, int? year, int? month)
         {
+            ViewBag.Year = year;
+            ViewBag.Month = month;
             return View(inputViewModel);
         }
         
         [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
         [ChildActionOnly]
-        public ActionResult ShowRecord()
+        public ActionResult ShowRecord(int? year, int? month)
         {
             var inputViewModel = _accountService.GetInputViewModel();
+            if (year != null && month != null)
+            {
+                inputViewModel = inputViewModel.Where(x => x.Date.Year == year && x.Date.Month == month).ToList();
+            }
+
             return View(inputViewModel);
         }
 
@@ -37,10 +53,10 @@ namespace Homework_SkillTree.Controllers
             {
                 _accountService.Add(inputViewModel);
                 _accountService.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("SkillTree");
             }
 
-            return RedirectToAction("Index", inputViewModel);
+            return RedirectToAction("SkillTree", inputViewModel);
         }
 
         public ActionResult About()
