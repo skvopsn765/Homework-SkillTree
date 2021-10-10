@@ -1,13 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 using Homework_SkillTree.Enums;
 using Homework_SkillTree.Filters;
 
 namespace Homework_SkillTree.Models
 {
-    public class RecordInputViewModel
+    public class InputViewModel
     {
         [Required]
         [DisplayName("類別")]

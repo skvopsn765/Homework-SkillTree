@@ -1,4 +1,4 @@
-﻿@model Homework_SkillTree.Models.RecordViewModel
+﻿@model Homework_SkillTree.Models.InputViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -11,30 +11,30 @@
     <div class="well">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(x => x.InputViewModel.Category, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(x => x.Category, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
-                @Html.EnumDropDownListFor(x => x.InputViewModel.Category, new { @class = "form-control" })
+                @Html.EnumDropDownListFor(x => x.Category, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(x => x.InputViewModel.Money, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(x => x.Money, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
-                @Html.EditorFor(x => x.InputViewModel.Money, new { htmlAttributes = new { placeholder = "金額", @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.InputViewModel.Money, "", new { @class = "text-danger" })
+                @Html.EditorFor(x => x.Money, new { htmlAttributes = new { placeholder = "金額", @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.Money, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(x => x.InputViewModel.Date, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(x => x.Date, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
-                @Html.EditorFor(x => x.InputViewModel.Date, new { htmlAttributes = new { placeholder = "日期", @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.InputViewModel.Date, "", new { @class = "text-danger" })
+                @Html.EditorFor(x => x.Date, new { htmlAttributes = new { placeholder = "日期", @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.Date, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(x => x.InputViewModel.Description, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(x => x.Description, new { @class = "control-label col-md-2" })
             <div class="col-sm-10">
-                @Html.TextAreaFor(x => x.InputViewModel.Description, new { placeholder = "備註", @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.InputViewModel.Description, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(x => x.Description, new { placeholder = "備註", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">

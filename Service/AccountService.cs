@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
 using Homework_SkillTree.Enums;
@@ -15,7 +16,7 @@ namespace Homework_SkillTree.Service
             _model1 = model1;
         }
 
-        public RecordViewModel GetRecordViewModel()
+        public List<InputViewModel> GetInputViewModel()
         {
             if (_model1.AccountBook is null)
             {
@@ -23,27 +24,24 @@ namespace Homework_SkillTree.Service
             }
 
             var accountBooks = _model1.AccountBook.ToList();
-            return new RecordViewModel
+            return accountBooks.Select(x => new InputViewModel
             {
-                DisplayViewModel = accountBooks.Select(x => new RecordInputViewModel()
-                {
-                    Category = (EnumCategory)x.Categoryyy,
-                    Date = x.Dateee,
-                    Description = x.Remarkkk,
-                    Money = x.Amounttt.ToString()
-                }).OrderByDescending(x => x.Date).ToList(),
-            };
+                Category = (EnumCategory)x.Categoryyy,
+                Date = x.Dateee,
+                Description = x.Remarkkk,
+                Money = x.Amounttt.ToString()
+            }).OrderByDescending(x => x.Date).ToList();
         }
 
-        public void Add(RecordInputViewModel recordInputViewModel)
+        public void Add(InputViewModel inputViewModel)
         {
             _model1.AccountBook.Add(new AccountBook()
             {
                 Id = Guid.NewGuid(),
-                Amounttt = Convert.ToInt32(recordInputViewModel.Money),
-                Categoryyy = (int)recordInputViewModel.Category,
-                Dateee = recordInputViewModel.Date,
-                Remarkkk = recordInputViewModel.Description
+                Amounttt = Convert.ToInt32(inputViewModel.Money),
+                Categoryyy = (int)inputViewModel.Category,
+                Dateee = inputViewModel.Date,
+                Remarkkk = inputViewModel.Description
             });
         }
 

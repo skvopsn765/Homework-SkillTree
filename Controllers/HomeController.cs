@@ -17,22 +17,21 @@ namespace Homework_SkillTree.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(RecordInputViewModel inputViewModel)
+        public ActionResult Index(InputViewModel inputViewModel)
         {
-            var recordViewModel = _accountService.GetRecordViewModel();
-            recordViewModel.InputViewModel = inputViewModel;
-            return View(recordViewModel);
+            return View(inputViewModel);
         }
         
         [HttpGet]
+        [ChildActionOnly]
         public ActionResult ShowRecord()
         {
-            var recordViewModel = _accountService.GetRecordViewModel();
-            return View(recordViewModel.DisplayViewModel);
+            var inputViewModel = _accountService.GetInputViewModel();
+            return View(inputViewModel);
         }
 
         [HttpPost]
-        public ActionResult Submit(RecordInputViewModel inputViewModel)
+        public ActionResult Submit(InputViewModel inputViewModel)
         {
             if (ModelState.IsValid)
             {
